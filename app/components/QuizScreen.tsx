@@ -9,12 +9,12 @@ interface FlowIDs {
 }
 
 const FLOWS: FlowIDs = {
-  chemistry: "1a382f34-06b2-47ba-af61-f73f8df45286",
+  chemistry: "9147521d-82ba-4e49-8086-1376a16c7da3",
   economics: "1a382f34-06b2-47ba-af61-f73f8df45286",
   spanish: "1a382f34-06b2-47ba-af61-f73f8df45286",
 };
 
-const API_HOST = "https://swariseai.swarise.com";
+const API_HOST = "http://localhost:3500/v1.0/bindings/flowise-binding";
 
 export default function FlowiseButtonQuiz() {
   const [loading, setLoading] = useState(false);
@@ -58,11 +58,14 @@ export default function FlowiseButtonQuiz() {
         chatId: CHAT_ID,
       };
       
-      const res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+     const res = await fetch(API_URL, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    operation: "post",
+    data: payload,
+  }),
+});
       const data = await res.json();
       const text = data?.text || data?.response || data?.message || "No response";
       
