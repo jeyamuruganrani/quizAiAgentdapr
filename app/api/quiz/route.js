@@ -6,7 +6,7 @@ export async function POST(request) {
     data: body,
   };
 
-  const res = await fetch("http://localhost:3600/v1.0/bindings/flowise-binding", {
+  const res = await fetch("http://localhost:3500/v1.0/bindings/flowise-binding", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
