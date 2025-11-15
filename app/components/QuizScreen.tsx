@@ -14,7 +14,8 @@ const FLOWS: FlowIDs = {
   spanish: "1a382f34-06b2-47ba-af61-f73f8df45286",
 };
 
-const API_HOST = "http://localhost:3500/v1.0/bindings/flowise-binding";
+const API_HOST = "http://localhost:3600/v1.0/bindings/flowise-binding";
+
 
 export default function FlowiseButtonQuiz() {
   const [loading, setLoading] = useState(false);
@@ -46,7 +47,8 @@ export default function FlowiseButtonQuiz() {
       return;
     }
 
-    const API_URL = `${API_HOST}/api/v1/prediction/${flowId}`;
+    // const API_URL = `${API_HOST}/api/v1/prediction/${flowId}`;
+    const API_URL = "/api/quiz";
     const CHAT_ID = `${topic}-session-001`;
 
     try {
@@ -58,13 +60,10 @@ export default function FlowiseButtonQuiz() {
         chatId: CHAT_ID,
       };
       
-     const res = await fetch(API_URL, {
+   const res = await fetch("/api/quiz", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    operation: "post",
-    data: payload,
-  }),
+  body: JSON.stringify(payload),
 });
       const data = await res.json();
       const text = data?.text || data?.response || data?.message || "No response";

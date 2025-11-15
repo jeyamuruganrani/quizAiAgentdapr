@@ -6,3 +6,4 @@ dapr run \
   --dapr-http-port 3500 \
   --resources-path ~/.dapr/components \
   -- npm run dev
+  
