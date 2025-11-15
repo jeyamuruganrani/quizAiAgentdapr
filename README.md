@@ -44,7 +44,7 @@ Dapr runtime
 
 Inside your working folder:
 
-clone :
+clone :"https://github.com/jeyamuruganrani/quizAiAgentdapr.git"
 
 
 Go inside the folder:
